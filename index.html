@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>DON SUPREMO</title>
+
+<style>
+
+body{
+margin:0;
+font-family:Arial;
+background:black;
+color:white;
+overflow-x:hidden;
+}
+
+header{
+height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+background:linear-gradient(45deg,#ff0000,#000,#6a00ff);
+animation:bgmove 8s infinite alternate;
+text-align:center;
+}
+
+header h1{
+font-size:70px;
+text-shadow:0 0 20px red;
+animation:bounce 2s infinite;
+}
+
+header p{
+font-size:22px;
+color:#ddd;
+}
+
+.enter-btn{
+margin-top:20px;
+padding:15px 40px;
+font-size:20px;
+border:none;
+border-radius:30px;
+background:red;
+color:white;
+cursor:pointer;
+box-shadow:0 0 20px red;
+transition:0.3s;
+}
+
+.enter-btn:hover{
+transform:scale(1.1);
+background:white;
+color:red;
+}
+
+nav{
+background:#111;
+padding:15px;
+text-align:center;
+position:sticky;
+top:0;
+}
+
+nav a{
+color:white;
+margin:15px;
+text-decoration:none;
+font-size:18px;
+}
+
+.section{
+padding:50px 20px;
+text-align:center;
+}
+
+.cards{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:20px;
+padding:20px;
+}
+
+.card{
+background:#111;
+padding:20px;
+border-radius:20px;
+border:1px solid red;
+box-shadow:0 0 15px rgba(255,0,0,0.4);
+transition:0.3s;
+}
+
+.card:hover{
+transform:translateY(-10px);
+}
+
+.card img{
+width:100%;
+border-radius:15px;
+}
+
+footer{
+background:#111;
+padding:20px;
+text-align:center;
+color:#999;
+}
+
+@keyframes bounce{
+0%,100%{transform:translateY(0);}
+50%{transform:translateY(-10px);}
+}
+
+@keyframes bgmove{
+from{filter:brightness(1);}
+to{filter:brightness(1.4);}
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>DON SUPREMO</h1>
+<p>The Ultimate Blogger • Gamer • Creator</p>
+
+<a href="#content">
+<button class="enter-btn">ENTER SITE</button>
+</a>
+</header>
+
+<nav>
+<a href="#blogs">Blogs</a>
+<a href="#videos">Videos</a>
+<a href="#games">Games</a>
+<a href="#downloads">Downloads</a>
+</nav>
+
+<section class="section" id="content">
+
+<h2 id="blogs">LATEST BLOGS</h2>
+
+<div class="cards">
+
+<div class="card">
+<h3>Gaming News</h3>
+<p>Latest gaming updates and reviews.</p>
+</div>
+
+<div class="card">
+<h3>Tech Updates</h3>
+<p>Phones, apps and internet tricks.</p>
+</div>
+
+<div class="card">
+<h3>Entertainment</h3>
+<p>Music, celebrities and trends.</p>
+</div>
+
+</div>
+
+<h2 id="videos">VIDEOS</h2>
+
+<div class="cards">
+
+<div class="card">
+<h3>Gameplay Videos</h3>
+<p>Your uploaded videos appear here.</p>
+</div>
+
+<div class="card">
+<h3>Tutorials</h3>
+<p>Tech and gaming tutorials.</p>
+</div>
+
+</div>
+
+<h2 id="games">GAMES</h2>
+
+<div class="cards">
+
+<div class="card">
+<h3>Play Games</h3>
+<p>Browser games can be added here.</p>
+</div>
+
+<div class="card">
+<h3>Download Games</h3>
+<p>APK and PC games section.</p>
+</div>
+
+</div>
+
+<h2 id="downloads">DOWNLOADS</h2>
+
+<div class="cards">
+
+<div class="card">
+<h3>Files</h3>
+<p>Movies, music, apps and ebooks.</p>
+</div>
+
+<div class="card">
+<h3>Premium Content</h3>
+<p>Exclusive DON SUPREMO uploads.</p>
+</div>
+
+</div>
+
+</section>
+
+<footer>
+<p>DON SUPREMO © 2026</p>
+</footer>
+<section class="section">
+
+<h2>UPLOAD CENTER</h2>
+
+<div class="card">
+
+<input type="file" id="fileUpload">
+
+<br><br>
+
+<button onclick="uploadFile()" class="enter-btn">
+UPLOAD
+</button>
+
+<p id="status"></p>
+
+</div>
+
+</section>
+
+<script>
+
+function uploadFile(){
+
+let file =
+document.getElementById('fileUpload').files[0];
+
+if(file){
+
+document.getElementById('status').innerHTML =
+file.name + " uploaded successfully";
+
+}else{
+
+document.getElementById('status').innerHTML =
+"Choose a file first";
+
+}
+
+}
+
+</script>
+</body>
+</html>
