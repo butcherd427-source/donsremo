@@ -3,31 +3,29 @@
 <head>
 <title>DON SUPREMO</title>
 
-<style>
+<link href="https://fonts.googleapis.com/css2?family=Creepster&family=UnifrakturCook:wght@700&display=swap" rel="stylesheet">
 
+<style>
 body{
 margin:0;
-font-family:Arial;
 background:black;
 color:white;
+font-family:Arial;
 overflow-x:hidden;
 }
 
 header{
-height:100vh;
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-background:linear-gradient(45deg,#ff0000,#000,#6a00ff);
-animation:bgmove 8s infinite alternate;
+padding:30px;
 text-align:center;
+background:linear-gradient(90deg,#ff00ff,#00ffff,#ff0000);
+animation: glow 3s infinite alternate;
 }
 
 header h1{
 font-size:70px;
+font-family:'UnifrakturCook',cursive;
+color:white;
 text-shadow:0 0 20px red;
-animation:bounce 2s infinite;
 }
 
 header p{
@@ -35,48 +33,40 @@ font-size:22px;
 color:#ddd;
 }
 
-.enter-btn{
-margin-top:20px;
-padding:15px 40px;
-font-size:20px;
+@keyframes glow{
+from{filter:brightness(1);}
+to{filter:brightness(1.4);}
+}
+
+.login-box{
+text-align:center;
+margin:20px;
+}
+
+input{
+padding:12px;
+margin:5px;
 border:none;
-border-radius:30px;
-background:red;
+border-radius:10px;
+width:80%;
+max-width:300px;
+}
+
+button{
+padding:12px 25px;
+border:none;
+border-radius:15px;
+background:#ff00ff;
 color:white;
-cursor:pointer;
-box-shadow:0 0 20px red;
-transition:0.3s;
-}
-
-.enter-btn:hover{
-transform:scale(1.1);
-background:white;
-color:red;
-}
-
-nav{
-background:#111;
-padding:15px;
-text-align:center;
-position:sticky;
-top:0;
-}
-
-nav a{
-color:white;
-margin:15px;
-text-decoration:none;
+font-weight:bold;
 font-size:18px;
+cursor:pointer;
+box-shadow:0 0 20px #ff00ff;
 }
 
-.section{
-padding:50px 20px;
-text-align:center;
-}
-
-.cards{
+.sections{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+grid-template-columns:1fr;
 gap:20px;
 padding:20px;
 }
@@ -85,175 +75,130 @@ padding:20px;
 background:#111;
 padding:20px;
 border-radius:20px;
-border:1px solid red;
-box-shadow:0 0 15px rgba(255,0,0,0.4);
-transition:0.3s;
+box-shadow:0 0 20px cyan;
+animation: float 3s infinite ease-in-out;
 }
 
-.card:hover{
-transform:translateY(-10px);
+.card h2{
+font-family:'Creepster',cursive;
+font-size:40px;
+color:#00ffff;
 }
 
-.card img{
-width:100%;
-border-radius:15px;
-}
-
-footer{
-background:#111;
-padding:20px;
-text-align:center;
-color:#999;
-}
-
-@keyframes bounce{
-0%,100%{transform:translateY(0);}
+@keyframes float{
+0%{transform:translateY(0);}
 50%{transform:translateY(-10px);}
+100%{transform:translateY(0);}
 }
 
-@keyframes bgmove{
-from{filter:brightness(1);}
-to{filter:brightness(1.4);}
+.upload{
+margin-top:20px;
 }
 
+.preview img,
+.preview video{
+width:100%;
+margin-top:10px;
+border-radius:10px;
+}
+
+.skull{
+position:fixed;
+font-size:40px;
+animation: fall 10s linear infinite;
+}
+
+@keyframes fall{
+0%{
+transform:translateY(-100px);
+}
+100%{
+transform:translateY(120vh);
+}
+}
 </style>
 </head>
 
 <body>
 
+<div class="skull" style="left:10%;">💀</div>
+<div class="skull" style="left:40%;animation-delay:2s;">🦇</div>
+<div class="skull" style="left:70%;animation-delay:5s;">👻</div>
+
 <header>
 <h1>DON SUPREMO</h1>
-<p>The Ultimate Blogger • Gamer • Creator</p>
-
-<a href="#content">
-<button class="enter-btn">ENTER SITE</button>
-</a>
+<p>Dark Blogger • Gamer • Horror Creator</p>
 </header>
 
-<nav>
-<a href="#blogs">Blogs</a>
-<a href="#videos">Videos</a>
-<a href="#games">Games</a>
-<a href="#downloads">Downloads</a>
-</nav>
+<div class="login-box">
+<h2>LOGIN</h2>
 
-<section class="section" id="content">
+<input type="text" placeholder="Username"><br>
+<input type="password" placeholder="Password"><br>
 
-<h2 id="blogs">LATEST BLOGS</h2>
-
-<div class="cards">
-
-<div class="card">
-<h3>Gaming News</h3>
-<p>Latest gaming updates and reviews.</p>
+<button>ENTER</button>
 </div>
 
-<div class="card">
-<h3>Tech Updates</h3>
-<p>Phones, apps and internet tricks.</p>
-</div>
+<div class="sections">
 
 <div class="card">
-<h3>Entertainment</h3>
-<p>Music, celebrities and trends.</p>
+<h2>VIDEOS</h2>
+
+<select id="type">
+<option value="video">Video</option>
+<option value="image">Image</option>
+<option value="file">File</option>
+</select>
+
+<div class="upload">
+<input type="file" id="upload">
 </div>
 
-</div>
-
-<h2 id="videos">VIDEOS</h2>
-
-<div class="cards">
-
-<div class="card">
-<h3>Gameplay Videos</h3>
-<p>Your uploaded videos appear here.</p>
+<div class="preview" id="preview"></div>
 </div>
 
 <div class="card">
-<h3>Tutorials</h3>
-<p>Tech and gaming tutorials.</p>
-</div>
-
-</div>
-
-<h2 id="games">GAMES</h2>
-
-<div class="cards">
-
-<div class="card">
-<h3>Play Games</h3>
-<p>Browser games can be added here.</p>
+<h2>GAMES</h2>
+<p>Upload APKs and horror games here.</p>
 </div>
 
 <div class="card">
-<h3>Download Games</h3>
-<p>APK and PC games section.</p>
+<h2>BLOGS</h2>
+<p>Dark stories and scary posts appear here.</p>
 </div>
 
 </div>
-
-<h2 id="downloads">DOWNLOADS</h2>
-
-<div class="cards">
-
-<div class="card">
-<h3>Files</h3>
-<p>Movies, music, apps and ebooks.</p>
-</div>
-
-<div class="card">
-<h3>Premium Content</h3>
-<p>Exclusive DON SUPREMO uploads.</p>
-</div>
-
-</div>
-
-</section>
-
-<footer>
-<p>DON SUPREMO © 2026</p>
-</footer>
-<section class="section">
-
-<h2>UPLOAD CENTER</h2>
-
-<div class="card">
-
-<input type="file" id="fileUpload">
-
-<br><br>
-
-<button onclick="uploadFile()" class="enter-btn">
-UPLOAD
-</button>
-
-<p id="status"></p>
-
-</div>
-
-</section>
 
 <script>
+const upload=document.getElementById("upload");
+const preview=document.getElementById("preview");
+const type=document.getElementById("type");
 
-function uploadFile(){
+upload.addEventListener("change",function(){
 
-let file =
-document.getElementById('fileUpload').files[0];
+const file=this.files[0];
 
-if(file){
+if(!file)return;
 
-document.getElementById('status').innerHTML =
-file.name + " uploaded successfully";
+const url=URL.createObjectURL(file);
 
-}else{
-
-document.getElementById('status').innerHTML =
-"Choose a file first";
-
+if(type.value==="image"){
+preview.innerHTML=
+`<img src="${url}">`;
 }
 
+else if(type.value==="video"){
+preview.innerHTML=
+`<video controls src="${url}"></video>`;
 }
 
+else{
+preview.innerHTML=
+`<p>📁 ${file.name}</p>`;
+}
+
+});
 </script>
+
 </body>
 </html>
