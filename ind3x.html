@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>DON SUPREMO</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+background:
+linear-gradient(rgba(0,0,0,0.8),rgba(0,0,0,0.95)),
+url('https://images.unsplash.com/photo-1511512578047-dfb367046420');
+background-size:cover;
+background-attachment:fixed;
+color:white;
+font-family:'Orbitron',sans-serif;
+overflow-x:hidden;
+}
+
+header{
+height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+backdrop-filter:blur(5px);
+}
+
+header h1{
+font-size:90px;
+font-family:'Cinzel',serif;
+letter-spacing:8px;
+color:white;
+text-shadow:
+0 0 10px #ff0000,
+0 0 30px #ff0000,
+0 0 60px #ff0000;
+animation:pulse 2s infinite alternate;
+}
+
+header p{
+font-size:22px;
+margin-top:20px;
+color:#00ffff;
+letter-spacing:4px;
+}
+
+@keyframes pulse{
+from{
+transform:scale(1);
+}
+to{
+transform:scale(1.05);
+}
+}
+
+.enter-btn{
+margin-top:40px;
+padding:18px 45px;
+border:none;
+border-radius:15px;
+background:linear-gradient(45deg,#ff0000,#8000ff);
+color:white;
+font-size:20px;
+font-family:'Orbitron',sans-serif;
+letter-spacing:3px;
+cursor:pointer;
+box-shadow:
+0 0 15px red,
+0 0 30px purple;
+transition:0.4s;
+}
+
+.enter-btn:hover{
+transform:scale(1.08);
+}
+
+.dashboard{
+display:none;
+padding:25px;
+}
+
+.section{
+background:rgba(255,255,255,0.06);
+border:1px solid rgba(255,255,255,0.15);
+backdrop-filter:blur(10px);
+padding:25px;
+margin-bottom:30px;
+border-radius:25px;
+box-shadow:
+0 0 20px rgba(0,255,255,0.2);
+}
+
+.section h2{
+font-size:38px;
+margin-bottom:20px;
+font-family:'Cinzel',serif;
+color:#ff00ff;
+}
+
+input{
+width:100%;
+padding:16px;
+border:none;
+border-radius:15px;
+background:#111;
+color:white;
+font-size:16px;
+margin-bottom:15px;
+font-family:'Orbitron',sans-serif;
+}
+
+.item{
+background:#111;
+padding:15px;
+border-radius:20px;
+margin-top:15px;
+animation:fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn{
+from{
+opacity:0;
+transform:translateY(20px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+img,video{
+width:100%;
+border-radius:15px;
+margin-top:10px;
+}
+
+.delete-btn{
+margin-top:10px;
+padding:10px 25px;
+border:none;
+border-radius:12px;
+background:red;
+color:white;
+font-family:'Orbitron',sans-serif;
+cursor:pointer;
+}
+
+.topbar{
+position:fixed;
+top:0;
+width:100%;
+padding:15px;
+background:rgba(0,0,0,0.7);
+backdrop-filter:blur(8px);
+display:flex;
+justify-content:space-between;
+align-items:center;
+z-index:100;
+}
+
+.logo{
+font-family:'Cinzel',serif;
+font-size:28px;
+color:#ff0000;
+letter-spacing:3px;
+}
+
+.admin{
+color:#00ffff;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="topbar">
+<div class="logo">DON SUPREMO</div>
+<div class="admin">ADMIN ACCESS</div>
+</div>
+
+<header id="home">
+
+<h1>DON SUPREMO</h1>
+
+<p>DARK BLOGGER • GAMER • CREATOR</p>
+
+<button class="enter-btn" onclick="openSite()">
+ENTER SYSTEM
+</button>
+
+</header>
+
+<div class="dashboard" id="dashboard">
+
+<div class="section">
+<h2>Pictures</h2>
+
+<input type="file" accept="image/*"
+onchange="uploadFile(event,'pictures')">
+
+<div id="pictures"></div>
+</div>
+
+<div class="section">
+<h2>Videos</h2>
+
+<input type="file" accept="video/*"
+onchange="uploadFile(event,'videos')">
+
+<div id="videos"></div>
+</div>
+
+<div class="section">
+<h2>Games</h2>
+
+<input type="file"
+onchange="uploadFile(event,'games')">
+
+<div id="games"></div>
+</div>
+
+<div class="section">
+<h2>Files & Documents</h2>
+
+<input type="file"
+onchange="uploadFile(event,'files')">
+
+<div id="files"></div>
+</div>
+
+</div>
+
+<script>
+
+function openSite(){
+
+const pass=prompt("ENTER ADMIN PASSWORD");
+
+if(pass==="supremo123"){
+
+document.getElementById("home").style.display="none";
+document.getElementById("dashboard").style.display="block";
+
+}
+
+else{
+
+alert("ACCESS DENIED");
+
+}
+
+}
+
+function uploadFile(event,category){
+
+const file=event.target.files[0];
+
+if(!file)return;
+
+const container=document.getElementById(category);
+
+const item=document.createElement("div");
+
+item.className="item";
+
+if(file.type.startsWith("image/")){
+
+const img=document.createElement("img");
+
+img.src=URL.createObjectURL(file);
+
+item.appendChild(img);
+
+}
+
+else if(file.type.startsWith("video/")){
+
+const video=document.createElement("video");
+
+video.src=URL.createObjectURL(file);
+
+video.controls=true;
+
+item.appendChild(video);
+
+}
+
+else{
+
+item.innerHTML="<p>"+file.name+"</p>";
+
+}
+
+const del=document.createElement("button");
+
+del.innerText="DELETE";
+
+del.className="delete-btn";
+
+del.onclick=function(){
+
+item.remove();
+
+};
+
+item.appendChild(del);
+
+container.appendChild(item);
+
+}
+
+</script>
+
+</body>
+</html>
