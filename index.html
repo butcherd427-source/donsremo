@@ -1,203 +1,300 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>DON SUPREMO</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Creepster&family=UnifrakturCook:wght@700&display=swap" rel="stylesheet">
+<title>𝔇𝔬𝔫 𝔖𝔲𝔭𝔯𝔢𝔪𝔬</title>
+
+<link href="https://fonts.googleapis.com/css2?family=UnifrakturCook:wght@700&display=swap" rel="stylesheet">
 
 <style>
+
 body{
 margin:0;
 background:black;
 color:white;
-font-family:Arial;
+font-family:'UnifrakturCook',cursive;
 overflow-x:hidden;
 }
 
 header{
-padding:30px;
+height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
 text-align:center;
-background:linear-gradient(90deg,#ff00ff,#00ffff,#ff0000);
-animation: glow 3s infinite alternate;
+background:
+linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.9)),
+url('https://images.unsplash.com/photo-1509248961158-e54f6934749c');
+background-size:cover;
+background-position:center;
 }
 
 header h1{
-font-size:70px;
-font-family:'UnifrakturCook',cursive;
-color:white;
-text-shadow:0 0 20px red;
+font-size:85px;
+color:#ff0000;
+text-shadow:
+0 0 10px red,
+0 0 20px red,
+0 0 40px red;
+animation: glow 2s infinite alternate;
 }
 
 header p{
-font-size:22px;
-color:#ddd;
-}
-
-@keyframes glow{
-from{filter:brightness(1);}
-to{filter:brightness(1.4);}
-}
-
-.login-box{
-text-align:center;
-margin:20px;
-}
-
-input{
-padding:12px;
-margin:5px;
-border:none;
-border-radius:10px;
-width:80%;
-max-width:300px;
-}
-
-button{
-padding:12px 25px;
-border:none;
-border-radius:15px;
-background:#ff00ff;
-color:white;
-font-weight:bold;
-font-size:18px;
-cursor:pointer;
-box-shadow:0 0 20px #ff00ff;
-}
-
-.sections{
-display:grid;
-grid-template-columns:1fr;
-gap:20px;
-padding:20px;
-}
-
-.card{
-background:#111;
-padding:20px;
-border-radius:20px;
-box-shadow:0 0 20px cyan;
-animation: float 3s infinite ease-in-out;
-}
-
-.card h2{
-font-family:'Creepster',cursive;
-font-size:40px;
+font-size:30px;
 color:#00ffff;
 }
 
-@keyframes float{
-0%{transform:translateY(0);}
-50%{transform:translateY(-10px);}
-100%{transform:translateY(0);}
+@keyframes glow{
+from{
+filter:brightness(1);
+}
+to{
+filter:brightness(1.5);
+}
 }
 
-.upload{
-margin-top:20px;
+.enter-btn{
+padding:20px 40px;
+font-size:25px;
+border:none;
+border-radius:20px;
+background:#ff00ff;
+color:white;
+cursor:pointer;
+box-shadow:0 0 25px #ff00ff;
+font-family:'UnifrakturCook',cursive;
 }
 
-.preview img,
-.preview video{
+.dashboard{
+display:none;
+padding:20px;
+}
+
+.section{
+background:#111;
+padding:20px;
+margin-bottom:30px;
+border-radius:20px;
+box-shadow:0 0 20px cyan;
+}
+
+.section h2{
+font-size:45px;
+color:#ff00ff;
+}
+
+input{
 width:100%;
+padding:15px;
 margin-top:10px;
+border:none;
 border-radius:10px;
+background:#222;
+color:white;
+font-size:18px;
+font-family:'UnifrakturCook',cursive;
 }
 
-.skull{
+.item{
+background:#222;
+padding:15px;
+margin-top:15px;
+border-radius:15px;
+}
+
+img,video{
+width:100%;
+border-radius:15px;
+margin-top:10px;
+}
+
+.delete-btn{
+margin-top:10px;
+padding:10px 20px;
+background:red;
+border:none;
+border-radius:10px;
+color:white;
+font-size:18px;
+font-family:'UnifrakturCook',cursive;
+}
+
+.ghost{
 position:fixed;
-font-size:40px;
-animation: fall 10s linear infinite;
+font-size:50px;
+animation: float 5s infinite ease-in-out;
 }
 
-@keyframes fall{
+@keyframes float{
 0%{
-transform:translateY(-100px);
+transform:translateY(0px);
+}
+50%{
+transform:translateY(-20px);
 }
 100%{
-transform:translateY(120vh);
+transform:translateY(0px);
 }
 }
+
+.cobweb{
+position:fixed;
+font-size:90px;
+top:0;
+left:0;
+}
+
 </style>
 </head>
 
 <body>
 
-<div class="skull" style="left:10%;">💀</div>
-<div class="skull" style="left:40%;animation-delay:2s;">🦇</div>
-<div class="skull" style="left:70%;animation-delay:5s;">👻</div>
+<div class="cobweb">🕸️</div>
 
-<header>
-<h1>DON SUPREMO</h1>
-<p>Dark Blogger • Gamer • Horror Creator</p>
+<div class="ghost" style="top:15%;left:10%;">👻</div>
+<div class="ghost" style="top:40%;left:80%;">💀</div>
+<div class="ghost" style="top:70%;left:50%;">🦇</div>
+
+<header id="home">
+
+<h1>𝔇𝔬𝔫 𝔖𝔲𝔭𝔯𝔢𝔪𝔬</h1>
+
+<p>Dark Blogger • Horror Creator • Gamer</p>
+
+<button class="enter-btn" onclick="openSite()">
+ENTER DARKNESS
+</button>
+
 </header>
 
-<div class="login-box">
-<h2>LOGIN</h2>
+<div class="dashboard" id="dashboard">
 
-<input type="text" placeholder="Username"><br>
-<input type="password" placeholder="Password"><br>
+<div class="section">
 
-<button>ENTER</button>
+<h2>Pictures</h2>
+
+<input type="file" accept="image/*"
+onchange="uploadFile(event,'pictures')">
+
+<div id="pictures"></div>
+
 </div>
 
-<div class="sections">
+<div class="section">
 
-<div class="card">
-<h2>VIDEOS</h2>
+<h2>Videos</h2>
 
-<select id="type">
-<option value="video">Video</option>
-<option value="image">Image</option>
-<option value="file">File</option>
-</select>
+<input type="file" accept="video/*"
+onchange="uploadFile(event,'videos')">
 
-<div class="upload">
-<input type="file" id="upload">
+<div id="videos"></div>
+
 </div>
 
-<div class="preview" id="preview"></div>
+<div class="section">
+
+<h2>Games</h2>
+
+<input type="file"
+onchange="uploadFile(event,'games')">
+
+<div id="games"></div>
+
 </div>
 
-<div class="card">
-<h2>GAMES</h2>
-<p>Upload APKs and horror games here.</p>
-</div>
+<div class="section">
 
-<div class="card">
-<h2>BLOGS</h2>
-<p>Dark stories and scary posts appear here.</p>
+<h2>Files and Documents</h2>
+
+<input type="file"
+onchange="uploadFile(event,'files')">
+
+<div id="files"></div>
+
 </div>
 
 </div>
 
 <script>
-const upload=document.getElementById("upload");
-const preview=document.getElementById("preview");
-const type=document.getElementById("type");
 
-upload.addEventListener("change",function(){
+function openSite(){
 
-const file=this.files[0];
+const pass=prompt("ENTER ADMIN PASSWORD");
 
-if(!file)return;
+if(pass==="supremo123"){
 
-const url=URL.createObjectURL(file);
+document.getElementById("home").style.display="none";
+document.getElementById("dashboard").style.display="block";
 
-if(type.value==="image"){
-preview.innerHTML=
-`<img src="${url}">`;
-}
-
-else if(type.value==="video"){
-preview.innerHTML=
-`<video controls src="${url}"></video>`;
 }
 
 else{
-preview.innerHTML=
-`<p>📁 ${file.name}</p>`;
+
+alert("ACCESS DENIED");
+
 }
 
-});
+}
+
+function uploadFile(event,category){
+
+const file=event.target.files[0];
+
+if(!file)return;
+
+const container=document.getElementById(category);
+
+const item=document.createElement("div");
+
+item.className="item";
+
+if(file.type.startsWith("image/")){
+
+const img=document.createElement("img");
+
+img.src=URL.createObjectURL(file);
+
+item.appendChild(img);
+
+}
+
+else if(file.type.startsWith("video/")){
+
+const video=document.createElement("video");
+
+video.src=URL.createObjectURL(file);
+
+video.controls=true;
+
+item.appendChild(video);
+
+}
+
+else{
+
+item.innerHTML="<p>"+file.name+"</p>";
+
+}
+
+const del=document.createElement("button");
+
+del.innerText="DELETE";
+
+del.className="delete-btn";
+
+del.onclick=function(){
+
+item.remove();
+
+};
+
+item.appendChild(del);
+
+container.appendChild(item);
+
+}
+
 </script>
 
 </body>
